@@ -1,0 +1,22 @@
+
+<form style="text-align: center" name="myForm">
+    <p><input type="text" name="foodaux" ng-model="foodaux" style="text-align: right" required minlength="4" ></p>
+
+    <div ng-messages="myForm.foodaux.$error" role="alert" style="color: red">
+        <div ng-message="required">Empty field</div>
+        <div ng-message="minlength">Too short</div>
+    </div>
+
+    <h1>{{food}}</h1>
+
+    <button ng-click="add()">add</button><br>
+    <button ng-click="surpriseme()">Surprise Me!</button>
+    <br>
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <h1>Status</h1>
+    {{myForm.myAddress.$valid}}
+    {{myForm.myAddress.$dirty}}
+    {{myForm.myAddress.$touched}}
+    <!--<span ng-show="myForm.myAddress.$error.email"> Not a valid email</span>-->
+</form>
