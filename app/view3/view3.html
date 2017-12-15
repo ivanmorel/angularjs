@@ -1,0 +1,10 @@
+I have {{friends.length}} friends. They are:
+<input type="search" ng-model="q" placeholder="test"/>
+<ul class="example-animate-container">
+    <li class="animate-repeat" ng-repeat="x in friends|filter: q as results">
+        [{{$index}}] {{x.name}} {{x.age}}
+    </li>
+    <li class="animate-repeat" ng-if="results.length==0">
+        No results
+    </li>
+</ul>

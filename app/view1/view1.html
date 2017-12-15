@@ -17,7 +17,7 @@
        <input type="email" name="myAddress" ng-model="text">
        <h1>Status</h1>
        {{myForm.myAddress.$valid}}
-       {{myForm.myAddress.$dirty}}
+       <h1 ng-if="myForm.myAddress.$dirty"> Dirty </h1>
        {{myForm.myAddress.$touched}}
    </div>
     <div>
@@ -34,6 +34,15 @@
         <input ng-list ng-model="list">
         {{list}}
     </div>
-
+    <div>
+        <form name="userForm">
+            <label>Name:
+                <input type="text" name="userName"
+                       ng-model="user.name"
+                       ng-model-options="{ getterSetter: true }" />
+            </label>
+        </form>
+        <pre>user.name = <span ng-bind="user.name('klk')"></span></pre>
+    </div>
     <!--<span ng-show="myForm.myAddress.$error.email"> Not a valid email</span>-->
 </form>
