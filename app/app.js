@@ -5,11 +5,10 @@ angular.module('myApp', [
     'ngMessages',
   'ngRoute',
   'ngAnimate',
-  'myApp.view1',
-  'myApp.view2',
-    'myApp.view3',
     'myApp.clicker',
     'myApp.speed',
+    'myApp.react',
+    'myApp.follow',
     'myApp.stats',
   'myApp.version'
 ]).

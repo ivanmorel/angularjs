@@ -1,5 +1,7 @@
 /* app css stylesheet */
 
+body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
+
 .topnav{
   background-color: red;
   overflow: hidden;
@@ -169,5 +171,9 @@ input{
 .base-class.my-class {
   color: red;
   font-size:3em;
+}
+
+:focus {
+  outline: none !important;
 }
 

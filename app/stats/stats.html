@@ -34,4 +34,22 @@
             <td>{{x.date | date: 'medium'}}</td>
         </tr>
     </table>
+
+    <h1>React</h1>
+    <table align="center">
+        <tr>
+            <th>Username</th>
+            <th>Mode</th>
+            <th>Reactions</th>
+            <th>RPS</th>
+            <th>Date</th>
+        </tr>
+        <tr ng-repeat="x in highscore | orderBy: '-rps' | filter: {game: 'React'}">
+            <td><img ng-if="$index<3"class="medal" src="{{medals[$index]}}">{{x.username}}</td>
+            <td>{{x.mode}}</td>
+            <td>{{x.reacts}}</td>
+            <td>{{x.rps}}</td>
+            <td>{{x.date | date: 'medium'}}</td>
+        </tr>
+    </table>
 </div>

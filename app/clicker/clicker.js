@@ -30,7 +30,6 @@ angular.module('myApp.clicker', ['ngRoute', 'ngAnimate', 'myApp'])
 
             $scope.seconds = seconds;
             $scope.stage1=true;
-            $scope.clicks = 0;
             $timeout(function(){
                 $scope.stage2 = false;
             },500);
