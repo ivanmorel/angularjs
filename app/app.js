@@ -10,6 +10,7 @@ angular.module('myApp', [
     'myApp.view3',
     'myApp.clicker',
     'myApp.speed',
+    'myApp.stats',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
