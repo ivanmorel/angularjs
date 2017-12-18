@@ -23,12 +23,29 @@
 .animate-repeat.ng-enter {
 
     opacity:0;
-    max-height:0;
 }
 
 .animate-repeat.ng-leave,
 .animate-repeat.ng-move.ng-move-active,
 .animate-repeat.ng-enter.ng-enter-active {
     opacity:1;
-    max-height:30px;
 }
+
+.animate-show-hide.ng-hide {
+    opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.check-element {
+    border: 1px solid black;
+    opacity: 1;
+    padding: 10px;
+}
+:focus {
+    outline: none !important;
+}
+body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}

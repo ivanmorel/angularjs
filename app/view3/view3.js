@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myApp.view3', ['ngRoute'])
+angular.module('myApp.view3', ['ngRoute', 'ngAnimate'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/view3', {
             templateUrl: 'view3/view3.html',

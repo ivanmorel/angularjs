@@ -9,35 +9,89 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="view3/animation.css">
+  <link rel="stylesheet" href="clicker/clicker.css">
+    <link rel="stylesheet" href="speed/speed.css">
+
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-    <li><a href="#/view3">view3</a></li>
-  </ul>
+<body ng-controller="AppCtrl">
 
+<div class="topnav" id="myTopnav">
+    <a class="active"><img src="https://image.flaticon.com/icons/svg/141/141075.svg" class="mainicon">Game Plaza</a>
+    <a href="#/clicker"><img src="https://image.flaticon.com/icons/svg/263/263402.svg" class="mainicon">Clicker</a>
+    <a href="#/speed"><img src="https://image.flaticon.com/icons/png/512/263/263381.png" class="mainicon">Speed</a>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="showdrop()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user.name}}
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+          <a onclick="modal()">Change User</a>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+      <h3>Change Username</h3>
+      <input type="text" align="right" ng-model="username">
+     <button class="play change seconds" onclick="closeModal()" ng-click="chUser()" type="submit">Change</button>
+  </div>
+</div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+<div id="contain-view">
+  <div ng-view id="view" ></div>
+</div>
+
+
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+<script>
+    function showdrop(){
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+    function modal(){
+        var modal = document.getElementById('myModal');
+        modal.style.display= "block"
+    }
+    function closeModal(){
+        var modal = document.getElementById('myModal');
+        modal.style.display = "none";
+    }
+</script>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="view3/view3.js"></script>
+  <script src="clicker/clicker.js"></script>
+  <script src="speed/speed.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
 </body>
 </html>

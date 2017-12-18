@@ -1,0 +1,134 @@
+.press {
+    color: #fff;
+    display:block;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 60px 70px;
+    border: 1px solid #2d6898;
+    background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+
+}
+.press:hover {
+    background-image: linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(79,142,191)),
+            color-stop(1, rgb(102,166,214))
+    );
+}
+.press:active {
+    background-image: linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(88,154,204) 0%, rgb(90,150,199) 100%);
+
+    -webkit-box-shadow: 0px 2px 0px #2b638f, 0px 1px 6px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -moz-box-shadow: 0px 2px 0px #2b638f, 0px 1px 6px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    box-shadow: 0px 2px 0px #2b638f, 0px 1px 6px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+
+.textcenter{
+    text-align: center;
+    padding-top: 100px;
+}
+.clicks {
+    height: 55px;
+}
+
+
+.play{
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #3e8e41;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+
+.play:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.playbutton{
+    outline: none;
+    background-color: #4CAF50;
+}
+.playbutton:hover {background-color: #7CAF60}
+
+.seconds{
+    background-color: #FF0000;
+}
+.seconds:hover{
+    background-color: #FF5050;
+}
+
+.medal{
+    height: 25px;
+    width: 25px;
+    padding-right: 5px;
+}
+.fadex.ng-hide
+{
+    opacity: 0;
+}
+
+.fadex.ng-hide-add,
+.fadex.ng-hide-remove{
+    transition: all linear 0.5s;
+}
+
+th{
+    border: 1px solid #ddd;
+    background-color: darkslategray;
+    color: white;
+    padding: 7px;
+    text-align: center;
+}
+td{
+    border: 1px solid #ddd;
+    padding: 7px;
+    text-align: center;
+}
+tr:hover {background-color: #f5f5f5}
+
+.signal{
+    font-size: 40px;
+}
+.signaldiv{
+    vertical-align: center;
+    line-height: 50px;
+}
+.signal.shrink-add{
+    font-size: 40px;
+    transition: all linear 1s;
+}
+
+.signal.shrink-add-active{
+    transform: scale(0.5);
+}
+

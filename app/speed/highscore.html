@@ -1,0 +1,20 @@
+<div class="fadex textcenter" ng-hide="stage3">
+    <h1>Last Round: {{lastclicks}}</h1>
+    <table align="center">
+        <tr>
+            <th>Username</th>
+            <th>Mode</th>
+            <th>Entries</th>
+            <th>EPS</th>
+            <th>Date</th>
+        </tr>
+        <tr ng-repeat="x in highscore | orderBy: '-eps' | filter: {game: 'Speed'}">
+            <td><img ng-if="$index<3"class="medal" src="{{medals[$index]}}">{{x.username}}</td>
+            <td>{{x.mode}}</td>
+            <td>{{x.entry}}</td>
+            <td>{{x.eps}}</td>
+            <td>{{x.date | date: 'medium'}}</td>
+        </tr>
+    </table>
+    <button style="margin-top: 20px" class="play playbutton" ng-click="replay()">Replay</button>
+</div>

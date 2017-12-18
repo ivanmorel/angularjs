@@ -7,7 +7,7 @@
         <div ng-message="minlength">Too short</div>
     </div>
 
-    <h1>{{food}}</h1>
+    <h1 >{{food}}</h1>
 
     <button ng-click="add()">add</button><br>
     <button ng-click="surpriseme()">Surprise Me!</button>
@@ -16,9 +16,7 @@
        Email:
        <input type="email" name="myAddress" ng-model="text">
        <h1>Status</h1>
-       {{myForm.myAddress.$valid}}
-       <h1 ng-if="myForm.myAddress.$dirty"> Dirty </h1>
-       {{myForm.myAddress.$touched}}
+       <p ng-if="myForm.myAddress.$invalid">invalid</p>
    </div>
     <div>
     <button ng-keypress="count = count + 1" ng-init="count=0">
@@ -43,6 +41,12 @@
             </label>
         </form>
         <pre>user.name = <span ng-bind="user.name('klk')"></span></pre>
+    </div>
+    <div>
+        Hide: <input type="checkbox" ng-model="checked">
+        <div class="animate-show-hide" ng-hide="checked">
+            This hides when the checkbox is pressed
+        </div>
     </div>
     <!--<span ng-show="myForm.myAddress.$error.email"> Not a valid email</span>-->
 </form>
