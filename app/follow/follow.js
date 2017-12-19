@@ -7,7 +7,7 @@ angular.module('myApp.follow', ['ngRoute', 'ngAnimate', 'myApp'])
         });
     }])
     .controller('followCtrl', ['$scope', '$timeout', 'highscore', function($scope, $timeout, highscore) {
-        $scope.follow= 0;
+        $scope.follow = 0;
         $scope.disseconds = true;
         $scope.lastfollow = "";
         $scope.disable = true;
@@ -21,30 +21,23 @@ angular.module('myApp.follow', ['ngRoute', 'ngAnimate', 'myApp'])
         $scope.medals= ["https://image.flaticon.com/icons/svg/522/522422.svg", "https://image.flaticon.com/icons/svg/522/522423.svg","https://image.flaticon.com/icons/svg/522/522424.svg"]
         $scope.signal = "";
         $scope.hidearrow = true;
-        $scope.prevx = 0;
-        $scope.prevy = 0;
+        $scope.value = 0;
         $scope.randir = Math.floor((Math.random()*3));
         $scope.dir = ["up", "down", "right", "left"];
         $scope.arrow = ["https://image.flaticon.com/icons/svg/109/109583.svg","https://image.flaticon.com/icons/svg/109/109611.svg","https://image.flaticon.com/icons/svg/109/109617.svg","https://image.flaticon.com/icons/svg/109/109618.svg"]
-        $scope.move = function($event){
-
-                if($event.x > $scope.prevx){
-                    $scope.xdir = 2
-                }else if ($event.x < $scope.prevx){
-                    $scope.xdir = 3
-                }
-                if($event.y > $scope.prevy){
-                    $scope.ydir = 1;
-                }else if ($event.y < $scope.prevy){
-                    $scope.ydir = 0;
-                }
-                if( $scope.randir == $scope.xdir || $scope.randir == $scope.ydir){
-                    $scope.randir = Math.floor((Math.random()*3));
+        $scope.follows = function(value){
+            if(!$scope.disable){
+                if( value==$scope.randir){
                     $scope.follow++;
+                    $scope.increase = true;
+                    $timeout(function(){
+                        $scope.increase= false;
+                    },100);
+                    $scope.randir = Math.floor((Math.random()*3));
+                }else{
+                    
                 }
-                $scope.prevx = $event.x;
-                $scope.prevy = $event.y;
-
+            }
         };
 
         $scope.test = function($event){
@@ -61,6 +54,10 @@ angular.module('myApp.follow', ['ngRoute', 'ngAnimate', 'myApp'])
             $timeout(function(){
                 $scope.disable = false;
                 $scope.hidearrow = false;
+                $scope.increase = true;
+                $timeout(function(){
+                    $scope.increase= false;
+                },100);
             },3500);
             $scope.chsignal(3,500,true);
             $scope.chsignal(2,1500,true);

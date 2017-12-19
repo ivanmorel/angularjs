@@ -1,9 +1,8 @@
-<div class="fadex textcenter" ng-hide="stage2">
+<div class="fadex textcenter2" ng-hide="stage2">
         <h1 ng-bind="signal" class="title signal signaldiv" ng-class="{shrink: shrink}"></h1>
-        <h1>{{dir[randir]}}</h1>
-        <h1>Prev X: {{prevx}}</h1>
-        <h1>Prev Y:{{prevy}}</h1>
-        <img src="{{arrow[randir]}}" class="arrow" ng-hide="hidearrow">
-        <div class="followzone" ng-mousemove="move($event)">
-        </div>
+        <img src="{{arrow[randir]}}" class="arrow" ng-hide="hidearrow" ng-class="{increase: increase}">
+        <div class="zonefollow zonef0" ng-mouseover="follows(0)"></div>
+        <div class="zonefollow zonef1" ng-mouseover="follows(3)"></div>
+        <div class="zonefollow zonef2" ng-mouseover="follows(2)"></div>
+        <div class="zonefollow zonef3" ng-mouseover="follows(1)"></div>
 </div>
