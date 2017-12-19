@@ -33,9 +33,7 @@ angular.module('myApp.follow', ['ngRoute', 'ngAnimate', 'myApp'])
                     $timeout(function(){
                         $scope.increase= false;
                     },100);
-                    $scope.randir = Math.floor((Math.random()*3));
-                }else{
-                    
+                    $scope.randir = Math.floor((Math.random()*4));
                 }
             }
         };
@@ -65,19 +63,18 @@ angular.module('myApp.follow', ['ngRoute', 'ngAnimate', 'myApp'])
             $scope.chsignal("FOLLOW!",3500,false);
 
             $timeout(function(){
-                $scope.lastfollow = $scope.follow;
-                $scope.entry = 0;
-                $scope.disable = true;
-                $scope.signal = "DONE!";
-                highscore.pushValue({username: highscore.getUser().name, game: 'Follow', mode: $scope.seconds +" Seconds", follow: $scope.lastfollow, fps: $scope.lastfollow/$scope.seconds, date: new Date()});
-                $scope.highscore = highscore.getHighscore();
-                $timeout(function(){
-                    $scope.stage2 = true
-                },500);
-                $timeout(function(){
-                    $scope.stage3 = false
-                },1000)
-
+                    $scope.lastfollow = $scope.follow;
+                    $scope.entry = 0;
+                    $scope.disable = true;
+                    $scope.signal = "DONE!";
+                    highscore.pushValue({username: highscore.getUser().name, game: 'Follow', mode: $scope.seconds +" Seconds", follow: $scope.lastfollow, fps: $scope.lastfollow/$scope.seconds, date: new Date()});
+                    $scope.highscore = highscore.getHighscore();
+                    $timeout(function(){
+                        $scope.stage2 = true
+                    },500);
+                    $timeout(function(){
+                        $scope.stage3 = false
+                    },1000)
             },$scope.seconds*1000+3500)
         };
 
