@@ -19,35 +19,36 @@
     <link rel="stylesheet" href="speed/speed.css">
     <link rel="stylesheet" href="react/react.css">
     <link rel="stylesheet" href="follow/follow.css">
-
+    <link rel="stylesheet" href="stats/stats.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-controller="AppCtrl">
 
+
 <div class="topnav" id="myTopnav">
-    <a class="active"><img src="https://image.flaticon.com/icons/svg/141/141075.svg" class="mainicon">Game Plaza</a>
-    <a href="#/clicker"><img src="https://image.flaticon.com/icons/svg/263/263402.svg" class="mainicon">Clicker</a>
-    <a href="#/speed"><img src="https://image.flaticon.com/icons/png/512/263/263381.png" class="mainicon">Speed</a>
-    <a href="#/react"><img src="https://image.flaticon.com/icons/svg/363/363357.svg" class="mainicon">React</a>
-    <a href="#/follow"><img src="https://image.flaticon.com/icons/svg/363/363357.svg" class="mainicon">Follow</a>
-    <a href="#/stats"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Stats</a>
+    <a class="main"><img src="https://image.flaticon.com/icons/svg/141/141075.svg" class="mainicon">Game Plaza</a>
+    <a ng-class="{active: seen[0]}" ng-click="maintab(0)" class="game" href="#/clicker"><img src="https://image.flaticon.com/icons/svg/263/263402.svg" class="mainicon">Clicker</a>
+    <a ng-class="{active: seen[1]}" ng-click="maintab(1)" class="game" href="#/speed"><img src="https://image.flaticon.com/icons/png/512/263/263381.png" class="mainicon">Speed</a>
+    <a ng-class="{active: seen[2]}" ng-click="maintab(2)" class="game" href="#/react"><img src="https://image.flaticon.com/icons/svg/363/363357.svg" class="mainicon">React</a>
+    <a ng-class="{active: seen[3]}" ng-click="maintab(3)" class="game" href="#/follow"><img src="https://image.flaticon.com/icons/svg/122/122644.svg" class="mainicon">Follow</a>
+    <a ng-class="{active: seen[4]}" ng-click="maintab(4)" class="game" href="#/stats"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Stats</a>
     <div class="dropdown">
-        <button class="dropbtn" onclick="showdrop()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user.name}}
+        <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user.name}}
           <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content" id="myDropdown">
-          <a onclick="modal()">Change User</a>
+        <div class="dropdown-content" id="myDropdown" ng-class="{show: showtog}">
+          <a ng-click="modal()">Change User</a>
         </div>
     </div>
 </div>
 
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" ng-class="{modaldisplay: modalshow}">
 
-  <span class="close" onclick="closeModal()">&times;</span>
+  <span class="close" ng-click="modal()">&times;</span>
   <div class="modal-content">
       <h3>Change Username</h3>
       <input type="text" align="right" ng-model="username">
-     <button class="play change seconds" onclick="closeModal()" ng-click="chUser()" type="submit">Change</button>
+     <button class="play change seconds" ng-click="chUser()" type="submit">Change</button>
   </div>
 </div>
   <!--[if lt IE 7]>
@@ -55,34 +56,13 @@
   <![endif]-->
 
 <div id="contain-view">
-  <div ng-view id="view" ></div>
+  <div ng-view></div>
 </div>
 
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-<script>
-    function showdrop(){
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-    window.onclick = function(e) {
-        if (!e.target.matches('.dropbtn')) {
-            var myDropdown = document.getElementById("myDropdown");
-            if (myDropdown.classList.contains('show')) {
-                myDropdown.classList.remove('show');
-            }
-        }
-    }
-    function modal(){
-        var modal = document.getElementById('myModal');
-        modal.style.display= "block"
-    }
-    function closeModal(){
-        var modal = document.getElementById('myModal');
-        modal.style.display = "none";
-    }
-</script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>

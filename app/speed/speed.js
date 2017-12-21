@@ -6,7 +6,7 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
             controller: 'speedCtrl'
         });
     }])
-    .controller('speedCtrl', ['$scope', '$timeout', 'highscore', function($scope, $timeout, highscore) {
+    .controller('speedCtrl', ['$scope', '$timeout', 'highscore','$http','$filter', function($scope, $timeout, highscore, $http, $filter) {
         $scope.entry= 0;
         $scope.disseconds = true;
         $scope.lastentry = "";
@@ -18,7 +18,7 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
         $scope.highscore  = [];
         $scope.seconds = 5;
         $scope.shrink = false;
-        $scope.medals= ["https://image.flaticon.com/icons/svg/522/522422.svg", "https://image.flaticon.com/icons/svg/522/522423.svg","https://image.flaticon.com/icons/svg/522/522424.svg"]
+        $scope.medals= ["https://image.flaticon.com/icons/svg/522/522422.svg", "https://image.flaticon.com/icons/svg/522/522423.svg","https://image.flaticon.com/icons/svg/522/522424.svg"];
         $scope.signal = "";
         $scope.move = function(){
             if(!$scope.disable){
@@ -26,9 +26,6 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
             }
         };
 
-        $scope.test = function($event){
-            $scope.x = $event.x;
-        };
         $scope.chseconds = function(seconds){
             $scope.seconds = seconds;
             $scope.disseconds = true;
@@ -50,14 +47,34 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
                 $scope.entry = 0;
                 $scope.disable = true;
                 $scope.signal = "DONE!";
-                highscore.pushValue({username: highscore.getUser().name, game: 'Speed', mode: $scope.seconds +" Seconds", entry: $scope.lastentry, eps: $scope.lastentry/$scope.seconds, date: new Date()});
-                $scope.highscore = highscore.getHighscore();
-                $timeout(function(){
-                    $scope.stage2 = true
-                },500);
-                $timeout(function(){
-                    $scope.stage3 = false
-                },1000)
+
+                $scope.data = {highscore: {username: highscore.getUser().name, game: "Speed", mode: "5 Seconds", action: $scope.lastentry, aps: $scope.lastentry/$scope.seconds}};
+                $http.post("http://127.0.0.1:3000/highscores", $scope.data).then(function(){
+                    $scope.httpstatus = "Success";
+                    $http.get("http://127.0.0.1:3000/highscores/json").then(function(response){
+                        $scope.httpstatus = "Success";
+                        $scope.highscore = response.data;
+                        $scope.map = $filter('filter')($scope.highscore,{game: 'Speed'});
+                        $scope.map = $filter('orderBy')($scope.map, '-aps');
+
+                        var tmp = $scope.map.map(function (x) {
+                            return new Date(x.date);
+                        });
+                        var max = new Date(Math.max.apply(null,tmp));
+                        var collection = tmp,max,idx;
+                        var ind = collection.map(Number).indexOf(+max);
+                        $scope.current = [];
+                        $scope.current[ind] = true;
+                    });
+                    $timeout(function(){
+                        $scope.stage2 = true
+                    },500);
+                    $timeout(function(){
+                        $scope.stage3 = false
+                    },1000)
+                }, function(){
+                    $scope.httpstatus = "Error";
+                });
 
             },$scope.seconds*1000+3500)
         };
@@ -88,6 +105,6 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
                 $scope.disseconds = false;
                 $scope.stage1 = false;
             },500)
-        }
+        };
 
     }]);

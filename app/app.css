@@ -13,6 +13,7 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition: 0.3s;
   font-size: 17px;
 }
 
@@ -22,6 +23,12 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
 }
 
 .topnav a.active
+{
+  background-color: #ccc;
+  color: red;
+}
+
+.topnav a.main
 {
   background-color: red;
   color: white;
@@ -42,6 +49,7 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
   color: white;
   font-size: 17px;
   padding: 14px 16px;
+  transition: 0.3s;
   background-color: inherit;
 }
 
@@ -113,7 +121,7 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
 }
 
 #contain-view{
-  overflow: hidden;
+  overflow: auto;
   width: 80%;
   height: 600px;
   margin-top: 100px;
@@ -123,10 +131,6 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
   border-radius: 30px;
 }
 
-#view{
-  padding-top: 50px;
-  padding-bottom: 250px;
-}
 
 .login{
   float: right;
@@ -148,7 +152,7 @@ input{
   height: 20px;
   width: 20px;
   margin-right: 5px;
-
+  margin-bottom: 3px;
 }
 
 .bodyicon{
@@ -175,5 +179,9 @@ input{
 
 :focus {
   outline: none !important;
+}
+
+.modaldisplay{
+  display: block;
 }
 

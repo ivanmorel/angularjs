@@ -1,4 +1,4 @@
-<div class="fadex textcenter" ng-hide="stage3">
+<div class="fadex textcenter2" ng-hide="stage3">
     <h1>Last Round: {{lastentry}}</h1>
     <table align="center">
         <tr>
@@ -8,11 +8,11 @@
             <th>EPS</th>
             <th>Date</th>
         </tr>
-        <tr ng-repeat="x in highscore | orderBy: '-eps' | filter: {game: 'Speed'}">
+        <tr ng-class="{current: current[$index]}" ng-repeat="x in highscore | orderBy: '-aps' | filter: {game: 'Speed'}">
             <td><img ng-if="$index<3"class="medal" src="{{medals[$index]}}">{{x.username}}</td>
             <td>{{x.mode}}</td>
-            <td>{{x.entry}}</td>
-            <td>{{x.eps}}</td>
+            <td>{{x.action}}</td>
+            <td>{{x.aps}}</td>
             <td>{{x.date | date: 'medium'}}</td>
         </tr>
     </table>
