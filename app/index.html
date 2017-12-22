@@ -33,7 +33,7 @@
     <a ng-class="{active: seen[3]}" ng-click="maintab(3)" class="game" href="#/follow"><img src="https://image.flaticon.com/icons/svg/122/122644.svg" class="mainicon">Follow</a>
     <a ng-class="{active: seen[4]}" ng-click="maintab(4)" class="game" href="#/stats"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Stats</a>
     <div class="dropdown">
-        <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user.name}}
+        <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user}}
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="myDropdown" ng-class="{show: showtog}">
@@ -77,5 +77,6 @@
   <script src="components/version/interpolate-filter.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 </body>
 </html>

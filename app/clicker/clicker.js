@@ -46,7 +46,7 @@ angular.module('myApp.clicker', ['ngRoute', 'ngAnimate', 'myApp'])
                 $scope.clicks = 0;
                 $scope.disable = true;
                 $scope.signal = "DONE!";
-                $scope.data = {highscore: {username: highscore.getUser().name, game: "Clicker", mode: "5 Seconds", action: $scope.lastclicks, aps: $scope.lastclicks/$scope.seconds}};
+                $scope.data = {highscore: {username: highscore.getUser(), game: "Clicker", mode: "5 Seconds", action: $scope.lastclicks, aps: $scope.lastclicks/$scope.seconds}};
                 $http.post("http://127.0.0.1:3000/highscores", $scope.data).then(function(){
                     $scope.httpstatus = "Success";
                     $http.get("http://127.0.0.1:3000/highscores/json").then(function(response){

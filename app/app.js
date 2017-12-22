@@ -5,6 +5,7 @@ angular.module('myApp', [
     'ngMessages',
   'ngRoute',
   'ngAnimate',
+    'ngCookies',
     'myApp.clicker',
     'myApp.speed',
     'myApp.react',
@@ -12,22 +13,23 @@ angular.module('myApp', [
     'myApp.stats',
   'myApp.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider ) {
+config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider.otherwise({redirectTo: '/clicker'});
-}]).controller('AppCtrl', ['$scope','highscore','$location', function($scope, highscore, $location) {
+}]).controller('AppCtrl', ['$scope','highscore','$location','$cookies', function($scope, highscore, $location, $cookies) {
     $scope.user = highscore.getUser();
     $scope.username = "";
     $scope.showtog = false;
     $scope.modalshow = false;
+
+
     $scope.chUser = function(){
-        $scope.user.name = $scope.username;
+        $scope.user = $scope.username;
         $scope.username= "";
         highscore.changeUser($scope.user);
         $scope.modal();
     };
     $scope.seen=[false,false,false,false,false];
-    console.log($location.url());
     switch($location.url()){
         case '/clicker':
             $scope.seen[0]= true;
@@ -59,10 +61,19 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         $scope.showtog=false;
     };
 }])
-    .service('highscore', function(){
+    .service('highscore', function($cookies){
         var highscore = [];
-        var user = {name: "guest"};
-        var currentstat = 0;
+        if($cookies.get('user')){
+            var user = $cookies.get('user');
+        }else{
+            var user = 'guest'
+        }
+        if($cookies.get('stat')){
+            var currentstat = $cookies.get('stat');
+        }else{
+            var currentstat = 0;
+        }
+
         this.pushValue = function(value){
           highscore.push(value);
         };
@@ -70,13 +81,15 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
           return highscore;
         };
         this.changeUser = function (value){
-            user = value;
+            $cookies.put('user', value);
+            user = $cookies.get('user');
         };
         this.getUser = function(){
             return user;
         };
         this.changeStat= function(value){
-            currentstat = value;
+            $cookies.put('stat', value);
+            currentstat = $cookies.get('stat');
         };
         this.getStat = function(){
             return currentstat;
