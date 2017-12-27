@@ -1,5 +1,10 @@
 .tabcontent {
     display: none;
+    height: 700px;
+    overflow: auto;
+    margin: 0 auto;
+    width: 40%;
+    margin-top: 20px;
 }
 .tab {
     overflow: hidden;
@@ -40,4 +45,7 @@
 
 .seen{
     display: block;
+}
+.overflow{
+    overflow: scroll;
 }

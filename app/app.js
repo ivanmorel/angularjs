@@ -24,9 +24,11 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 
     $scope.chUser = function(){
-        $scope.user = $scope.username;
-        $scope.username= "";
-        highscore.changeUser($scope.user);
+        if($scope.username){
+            $scope.user = $scope.username;
+            $scope.username= "";
+            highscore.changeUser($scope.user);
+        }
         $scope.modal();
     };
     $scope.seen=[false,false,false,false,false];
@@ -81,8 +83,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
           return highscore;
         };
         this.changeUser = function (value){
-            $cookies.put('user', value);
-            user = $cookies.get('user');
+                $cookies.put('user', value);
+                user = $cookies.get('user');
         };
         this.getUser = function(){
             return user;
