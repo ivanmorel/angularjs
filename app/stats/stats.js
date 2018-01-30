@@ -7,7 +7,7 @@ angular.module('myApp.stats', ['ngRoute', 'myApp'])
         });
     }])
     .controller('statsCtrl', ['$scope', 'highscore','$http', function($scope, highscore, $http) {
-        $http.get("http://10.34.203.56:3000/highscores/json").then(function(response){
+        $http.get("http://127.0.0.1:3000/highscores/json").then(function(response){
             $scope.httpstatus = "Success";
             $scope.highscore = response.data;
         });

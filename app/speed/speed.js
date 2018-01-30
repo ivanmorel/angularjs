@@ -49,9 +49,9 @@ angular.module('myApp.speed', ['ngRoute', 'ngAnimate', 'myApp'])
                 $scope.signal = "DONE!";
 
                 $scope.data = {highscore: {username: highscore.getUser(), game: "Speed", mode: "5 Seconds", action: $scope.lastentry, aps: $scope.lastentry/$scope.seconds}};
-                $http.post("http://10.34.203.56:3000/highscores", $scope.data).then(function(){
+                $http.post("http://127.0.0.1:3000/highscores", $scope.data).then(function(){
                     $scope.httpstatus = "Success";
-                    $http.get("http://10.34.203.56:3000/highscores/json").then(function(response){
+                    $http.get("http://127.0.0.1:3000/highscores/json").then(function(response){
                         $scope.httpstatus = "Success";
                         $scope.highscore = response.data;
                         $scope.map = $filter('filter')($scope.highscore,{game: 'Speed'});

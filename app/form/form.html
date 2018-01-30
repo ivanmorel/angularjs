@@ -1,0 +1,39 @@
+<form name="myForm">
+    <h1>Form example</h1>
+
+    <div class="row">
+        <div class="column1">
+            <h4>Email</h4>
+            <input ng-model="email" name="email" type="email" required><br>
+            <span class="error" style="color: red" ng-show="myForm.email.$error.email">invalid format</span>
+            <span class="error" style="color: red" ng-show="myForm.email.$error.required">input required</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column1">
+            <h4>Username</h4>
+            <input type="text" name="username" ng-minlength="6" ng-model="username" required>
+            <div class="error" style="color: red" ng-show="myForm.username.$error.minlength">too short (min 6 char)</div>
+            <div class="error" style="color: red" ng-show="myForm.username.$error.required">input required</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column1">
+            <h4>Password</h4>
+            <input type="password" name="password" ng-minlength="6" ng-model="password" required>
+            <div class="error" style="color: red" ng-show="myForm.password.$error.minlength">too short (min 6 characters)</div>
+            <div class="error" style="color: red" ng-show="myForm.password.$error.required">input required</div>
+            <div class="error" style="color: red" ng-show="myForm.password.$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column1">
+            <h4>Repeat Password</h4>
+            <input type="password" name="rpassword" ng-minlength="6" ng-model="rpassword" required>
+            <div class="error" style="color: red" ng-show="myForm.rpassword.$error.minlength">too short (min 6 characters)</div>
+            <div class="error" style="color: red" ng-show="myForm.rpassword.$error.required">input required</div>
+            <div class="error" style="color: red" ng-show="myForm.password.$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
+        </div>
+    </div>
+</form>

@@ -11,7 +11,8 @@ angular.module('myApp', [
     'myApp.react',
     'myApp.follow',
     'myApp.stats',
-  'myApp.version'
+  'myApp.version',
+    'myApp.form'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
