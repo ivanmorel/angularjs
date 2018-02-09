@@ -18,7 +18,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $locationProvider.hashPrefix('');
   $routeProvider.otherwise({redirectTo: '/clicker'});
 }]).controller('AppCtrl', ['$scope','highscore','$location','$cookies', function($scope, highscore, $location, $cookies) {
-    $scope.user = highscore.getUser();
+    $scope.userx = highscore.getUser();
     $scope.username = "";
     $scope.showtog = false;
     $scope.modalshow = false;
@@ -26,9 +26,9 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
     $scope.chUser = function(){
         if($scope.username){
-            $scope.user = $scope.username;
+            $scope.userx = $scope.username;
             $scope.username= "";
-            highscore.changeUser($scope.user);
+            highscore.changeUser($scope.userx);
         }
         $scope.modal();
     };

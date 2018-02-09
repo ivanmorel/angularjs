@@ -1,18 +1,17 @@
-<form name="myForm">
+<form action="http://127.0.0.1:3000/users" name="myForm" method="post">
     <h1>Form example</h1>
-
     <div class="row">
         <div class="column1">
-            <h4>Email</h4>
-            <input ng-model="email" name="email" type="email" required>
-            <div class="error" style="color: red" ng-show="myForm.email.$error.email">invalid format</div>
-            <div class="error" style="color: red" ng-show="myForm.email.$error.required">input required</div>
+            <h4>In-Game Name</h4>
+            <input type="text" name="user[ingame]" ng-minlength="6" ng-model="user.ingame" required>
+            <div class="error" style="color: red" ng-show="myForm['user[ingame]'].$error.minlength">too short (min 6 char)</div>
+            <div class="error" style="color: red" ng-show="myForm['user[ingame]'].$error.required">input required</div>
         </div>
     </div>
     <div class="row">
         <div class="column1">
             <h4>Username</h4>
-            <input type="text" name="username" ng-minlength="6" ng-model="username" required>
+            <input type="text" name="user[username]" ng-minlength="6" ng-model="username" required>
             <div class="error" style="color: red" ng-show="myForm.username.$error.minlength">too short (min 6 char)</div>
             <div class="error" style="color: red" ng-show="myForm.username.$error.required">input required</div>
         </div>
@@ -20,7 +19,7 @@
     <div class="row">
         <div class="column1">
             <h4>Password</h4>
-            <input type="password" name="password" ng-minlength="6" ng-model="password" required>
+            <input type="password" name="user[password]" ng-minlength="6" ng-model="password" required>
             <div class="error" style="color: red" ng-show="myForm.password.$error.minlength">too short (min 6 characters)</div>
             <div class="error" style="color: red" ng-show="myForm.password.$error.required">input required</div>
             <div class="error" style="color: red" ng-show="myForm.password.$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
@@ -35,4 +34,13 @@
             <div class="error" style="color: red" ng-show="myForm.password.$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
         </div>
     </div>
+    <div class="row">
+        <div class="column1">
+            <h4>Email</h4>
+            <input ng-model="email" name="user[email]" type="email" required>
+            <div class="error" style="color: red" ng-show="myForm.email.$error.email">invalid format</div>
+            <div class="error" style="color: red" ng-show="myForm.email.$error.required">input required</div>
+        </div>
+    </div>
+    <input type="submit">
 </form>

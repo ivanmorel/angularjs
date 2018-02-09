@@ -7,5 +7,4 @@ angular.module('myApp.form', ['ngRoute', 'ngAnimate', 'myApp'])
         });
     }])
     .controller('formCtrl', ['$scope', '$timeout', 'highscore', '$http', '$filter', function($scope, $timeout, highscore, $http, $filter) {
-        $scope.hola = "wtf";
     }]);
