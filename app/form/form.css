@@ -1,7 +1,6 @@
 form{
     margin-left: 30px;
     display: table;
-    background-color: #999999;
 }
 
 .error{
@@ -18,9 +17,13 @@ form{
 }
 .column1{
     display: table-cell;
-    background-color: #2b638f;
 }
 h4{
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.submitbutton{
+    text-align: center;
+    padding-top: 10px;
 }

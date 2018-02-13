@@ -35,11 +35,11 @@
     <a ng-class="{active: seen[4]}" ng-click="maintab(4)" class="game" href="#/stats"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Stats</a>
     <a ng-class="{active: seen[5]}" ng-click="maintab(5)" class="game" href="#/form"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Form</a>
     <div class="dropdown">
-        <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{user}}
+        <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{userx}}
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="myDropdown" ng-class="{show: showtog}">
-          <a ng-click="modal()">Change User</a>
+          <a ng-click="modal()">Login</a>
         </div>
     </div>
 </div>
@@ -48,9 +48,11 @@
 
   <span class="close" ng-click="modal()">&times;</span>
   <div class="modal-content">
-      <h3>Change Username</h3>
+      <h1>Username</h1>
       <input type="text" align="right" ng-model="username">
-     <button class="play change seconds" ng-click="chUser()" type="submit">Change</button>
+      <h1>Password</h1>
+      <input type="text" align="right" ng-model="password">
+     <button class="play change seconds" ng-click="chUser()" type="submit">Login</button>
   </div>
 </div>
   <!--[if lt IE 7]>
