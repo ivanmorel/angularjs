@@ -33,13 +33,14 @@
     <a ng-class="{active: seen[2]}" ng-click="maintab(2)" class="game" href="#/react"><img src="https://image.flaticon.com/icons/svg/363/363357.svg" class="mainicon">React</a>
     <a ng-class="{active: seen[3]}" ng-click="maintab(3)" class="game" href="#/follow"><img src="https://image.flaticon.com/icons/svg/122/122644.svg" class="mainicon">Follow</a>
     <a ng-class="{active: seen[4]}" ng-click="maintab(4)" class="game" href="#/stats"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Stats</a>
-    <a ng-class="{active: seen[5]}" ng-click="maintab(5)" class="game" href="#/form"><img src="https://image.flaticon.com/icons/svg/230/230308.svg" class="mainicon">Form</a>
+    <a ng-class="{active: seen[5]}" ng-click="maintab(5)" class="game" href="#/form"><img src="https://image.flaticon.com/icons/svg/477/477796.svg" class="mainicon">Register</a>
     <div class="dropdown">
         <button class="dropbtn" ng-click="show()"><img src="https://image.flaticon.com/icons/svg/51/51758.svg" class="mainicon">{{userx}}
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content" id="myDropdown" ng-class="{show: showtog}">
           <a ng-click="modal()">Login</a>
+            <a ng-click="maintab(5)" href="#/form">Create Account</a>
         </div>
     </div>
 </div>
@@ -47,13 +48,19 @@
 <div id="myModal" class="modal" ng-class="{modaldisplay: modalshow}">
 
   <span class="close" ng-click="modal()">&times;</span>
-  <div class="modal-content">
+  <form name="modalform" class="modal-content">
       <h1>Username</h1>
-      <input type="text" align="right" ng-model="username">
+      <input type="text" align="right" ng-model="username" name="username" ng-change="clearwrong()" minlength="6" required>
+      <span class="error" style="color: red" ng-show="modalform.username.$error.required">*</span>
+      <div class="error" style="color: red" ng-show="modalform.username.$error.minlength">Too short (6 char)</div>
+      <div class="error" style="color: red" ng-show="wrongusername">Wrong username</div>
       <h1>Password</h1>
-      <input type="text" align="right" ng-model="password">
-     <button class="play change seconds" ng-click="chUser()" type="submit">Login</button>
-  </div>
+      <input type="password" align="right" ng-model="password" ng-change="clearwrong()" minlength="6" name="password" required>
+      <span class="error" style="color: red" ng-show="modalform.password.$error.required">*</span>
+      <div class="error" style="color: red" ng-show="modalform.password.$error.minlength">Too short (6 char)</div>
+      <div class="error" style="color: red" ng-show="wrongpassword">Wrong password</div>
+     <button class="play change seconds" ng-click="chUser()" type="submit" ng-disabled="modalform.$invalid">Login</button>
+  </form>
 </div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

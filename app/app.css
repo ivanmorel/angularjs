@@ -96,7 +96,6 @@ body,h1,h5,h6,td,th{font-family: "Lato", sans-serif; font-size: 20px;}
 .modal-content{
   text-align: center;
   padding: 30px;
-  height: 280px;
   background-color: white;
   margin:auto;
   display: block;

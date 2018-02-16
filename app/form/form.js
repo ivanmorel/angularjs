@@ -7,7 +7,7 @@ angular.module('myApp.form', ['ngRoute', 'ngAnimate', 'myApp'])
         });
     }])
     .controller('formCtrl', ['$scope', '$timeout', 'highscore', '$http', '$filter', function($scope, $timeout, highscore, $http, $filter) {
-        $http.get("http://127.0.0.1:3000/users/json").then(function(response){
+        $http.get("http://10.100.27.14:3000/users/json").then(function(response){
             $scope.users = response.data;
         });
         $scope.found = false;
@@ -18,7 +18,7 @@ angular.module('myApp.form', ['ngRoute', 'ngAnimate', 'myApp'])
             $scope.register= false;
             $scope.users.forEach(function(v,k){
                 if(cont){
-                    if(v.ingame==user){
+                    if(v.ingame.toLowerCase()==user.toLowerCase()){
                         $scope.found = true;
                         cont = false;
                     }else{
@@ -33,7 +33,7 @@ angular.module('myApp.form', ['ngRoute', 'ngAnimate', 'myApp'])
             $scope.register= false;
             $scope.users.forEach(function(v,k){
                 if(cont){
-                    if(v.username==user){
+                    if(v.username==user.toLowerCase()){
                         $scope.founduser = true;
                         cont = false;
                     }else{
@@ -45,11 +45,20 @@ angular.module('myApp.form', ['ngRoute', 'ngAnimate', 'myApp'])
         };
 
         $scope.clear = function(){
-            $http.get("http://127.0.0.1:3000/users/json").then(function(response){
+            $http.get("http://10.100.27.14:3000/users/json").then(function(response){
                 $scope.users = response.data;
                 $scope.user = {'ingame': "", 'username': "", 'password': "", 'email': ""};
                 $scope.rpassword = "";
                 $scope.register= true;
             });
-        }
+        };
+
+        $scope.submit = function(){
+            $scope.userax = {'ingame': $scope.user.ingame, 'username': $scope.user.username.toLowerCase(), 'password': $scope.user.password, 'email': $scope.user.email};
+            $http.post("http://10.100.27.14:3000/users", $scope.userax).then(function(response){
+                $scope.user = {'ingame': "", 'username': "", 'password': "", 'email': ""};
+                $scope.rpassword = "";
+                $scope.register= true;
+            });
+        };
     }]);

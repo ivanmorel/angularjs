@@ -17,20 +17,42 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider.otherwise({redirectTo: '/clicker'});
-}]).controller('AppCtrl', ['$scope','highscore','$location','$cookies', function($scope, highscore, $location, $cookies) {
+}]).controller('AppCtrl', ['$scope','highscore','$location','$http', function($scope, highscore, $location, $http) {
     $scope.userx = highscore.getUser();
     $scope.username = "";
     $scope.showtog = false;
     $scope.modalshow = false;
-
-
+    var cont = true;
+    var founduser = false;
+    $scope.wrongusername = false;
+    $scope.wrongpassword = false;
     $scope.chUser = function(){
-        if($scope.username){
-            $scope.userx = $scope.username;
-            $scope.username= "";
-            highscore.changeUser($scope.userx);
-        }
-        $scope.modal();
+        $http.get("http://10.100.27.14:3000/users/json").then(function(response){
+            $scope.useraux = response.data;
+            $scope.wrongusername=true;
+            $scope.useraux.forEach(function(v,k){
+                if(cont){
+                    if(v.username==$scope.username.toLowerCase()){
+                        if(v.password==$scope.password){
+                            $scope.userx = v.ingame;
+                            highscore.changeUser($scope.userx);
+                            $scope.username="";
+                            $scope.password="";
+                            $scope.modal();
+                        }else{
+                            $scope.wrongpassword=true;
+                        }
+                        cont = false;
+                        $scope.wrongusername=false;
+                    }
+                }
+            });
+            cont=true;
+        });
+    };
+    $scope.clearwrong = function(){
+        $scope.wrongusername=false;
+        $scope.wrongpassword=false;
     };
     $scope.seen=[false,false,false,false,false];
     switch($location.url()){
@@ -49,9 +71,13 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         case '/stats':
             $scope.seen[4]= true;
             break;
+        case '/form':
+            $scope.seen[5]= true;
+            break;
     }
 
     $scope.maintab = function(ind){
+        $scope.showtog=false;
         $scope.seen.forEach(function (value, index) { $scope.seen[index] = false });
         $scope.seen[ind]=true;
     };
@@ -62,6 +88,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     $scope.modal = function(){
         $scope.modalshow = !$scope.modalshow;
         $scope.showtog=false;
+
     };
 }])
     .service('highscore', function($cookies){

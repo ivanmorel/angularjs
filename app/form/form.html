@@ -1,53 +1,41 @@
-<form action="http://127.0.0.1:3000/users" name="myForm" method="post" ng-submit="clear()">
+<form name="myForm" method="post" ng-submit="submit()" class="formcenter">
     <h2>Register</h2>
     <h1 style="color: green" ng-show="register">Registered Successfully</h1>
-    <div class="row">
-        <span class="column1">
+    <div class="column1">
             <h4>In-Game Name</h4>
             <input ng-change="isIngameAvailable(user.ingame)" type="text" name="user[ingame]" ng-minlength="6" ng-model="user.ingame" required>
             <span class="error" style="color: red" ng-show="myForm['user[ingame]'].$error.required">*</span>
             <div class="error" style="color: red" ng-show="myForm['user[ingame]'].$error.minlength">too short (min 6 char)</div>
             <div class="error" style="color: red" ng-show="found && !myForm['user[ingame]'].$error.minlength && !myForm['user[ingame]'].$error.required">Ingame used</div>
-        </div>
     </div>
-    <div class="row">
-        <div class="column1">
+    <div class="column1">
             <h4>Username</h4>
             <input type="text" ng-change="isUserAvailable(user.username)" name="user[username]" ng-minlength="6" ng-model="user.username" required>
             <span class="error" style="color: red" ng-show="myForm['user[username]'].$error.required">*</span>
             <div class="error" style="color: red" ng-show="myForm['user[username]'].$error.minlength">too short (min 6 char)</div>
             <div class="error" style="color: red" ng-show="founduser && !myForm['user[username]'].$error.minlength && !myForm['user[username]'].$error.required">Username used</div>
-        </div>
     </div>
-    <div class="row">
-        <div class="column1">
+    <div class="column1">
             <h4>Password</h4>
             <input type="password" name="user[password]" ng-minlength="6" ng-model="user.password" required>
             <span class="error" style="color: red" ng-show="myForm['user[password]'].$error.required">*</span>
             <div class="error" style="color: red" ng-show="myForm['user[password]'].$error.minlength">too short (min 6 characters)</div>
-            <div class="error" style="color: red" ng-show="myForm['user[password]'].$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
-        </div>
+            <div class="error" style="color: red" ng-show="(myForm['user[password]'].$viewValue!=myForm.rpassword.$viewValue) && myForm.rpassword.$viewValue">passwords are not the same</div>
     </div>
-    <div class="row">
-        <div class="column1">
+    <div class="column1">
             <h4>Repeat Password</h4>
             <input type="password" name="rpassword" ng-minlength="6" ng-model="rpassword" required>
             <span class="error" style="color: red" ng-show="myForm.rpassword.$error.required">*</span>
             <div class="error" style="color: red" ng-show="myForm.rpassword.$error.minlength">too short (min 6 characters)</div>
-            <div class="error" style="color: red" ng-show="myForm['user[password]'].$viewValue!=myForm.rpassword.$viewValue">passwords are not the same</div>
-        </div>
+            <div class="error" style="color: red" ng-show="(myForm['user[password]'].$viewValue!=myForm.rpassword.$viewValue) && myForm.rpassword.$viewValue">passwords are not the same</div>
     </div>
-    <div class="row">
-        <div class="column1">
+    <div class="column1">
             <h4>Email</h4>
             <input ng-model="user.email" name="user[email]" type="email" required>
             <span class="error" style="color: red" ng-show="myForm['user[email]'].$error.required">*</span>
             <div class="error" style="color: red" ng-show="myForm['user[email]'].$error.email">invalid format</div>
-        </div>
     </div>
-    <div class="row">
         <div class="column1 submitbutton" >
             <button class="play seconds" ng-disabled="myForm.$invalid || (myForm['user[password]'].$viewValue!=myForm.rpassword.$viewValue)|| found ||founduser"type="submit">Submit</button>
         </div>
-    </div>
  </form>
